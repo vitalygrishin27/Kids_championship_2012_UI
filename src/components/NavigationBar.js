@@ -20,7 +20,7 @@ export default class NavigationBar extends Component {
         return (
             <Navbar variant="dark" className={"text-white"} style={{ backgroundColor: 'transparent' }}>
                 <Link className="navbar-brand" to={""}>
-                    <img alt="" src="/images/logo.png"/>
+                    <img alt="" src="/images/logo.png" width="217" height="100" />
                 </Link>
                 <Nav className="mr-auto">
                     <Link className="nav-link" to={"/list"}>
