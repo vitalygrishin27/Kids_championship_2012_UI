@@ -20,6 +20,7 @@ import TourList from "./components/TourList";
 import Tour from "./components/Tour";
 import Competition from "./components/Competition";
 import CompetitionList from "./components/CompetitionList";
+import Regulation from "./components/Regulation";
 
 function App() {
     const marginTop = {
@@ -49,6 +50,7 @@ function App() {
                             <Route path={"/competition/:competitionId/:competitionName"} exact component = {Competition}/>
                             <Route path={"/competitions"} exact component = {CompetitionList}/>
                             <Route path={"/tours"} exact component = {TourList}/>
+                            <Route path={"/regulation"} exact component = {Regulation}/>
                         </Switch>
                     </Col>
                 </Row>

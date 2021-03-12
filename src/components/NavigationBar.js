@@ -18,9 +18,9 @@ export default class NavigationBar extends Component {
 
     render() {
         return (
-            <Navbar variant="dark" className={"text-white"} style={{ backgroundColor: 'transparent' }}>
+            <Navbar variant="dark" className={"text-white"} style={{backgroundColor: 'transparent'}}>
                 <Link className="navbar-brand" to={""}>
-                    <img alt="" src="/images/logo.png" width="217" height="100" />
+                    <img alt="" src="/images/logo.png" width="217" height="100"/>
                 </Link>
                 <Nav className="mr-auto">
                     <Link className="nav-link" to={"/list"}>
@@ -43,13 +43,18 @@ export default class NavigationBar extends Component {
                     </Link>
                 </Nav>
                 <Nav className="mr-auto">
+                    <Link className="nav-link" to={"/regulation"}>
+                        Документи
+                    </Link>
+                </Nav>
+                <Nav className="mr-auto">
                     {localStorage.getItem('role') ?
-                        <a style={{"cursor":"pointer"}} className="nav-link" onClick={this.clearLocaleStorage.bind()}>
+                        <a style={{"cursor": "pointer"}} className="nav-link" onClick={this.clearLocaleStorage.bind()}>
                             Вийти
                         </a> :
                         <Link className="nav-link" to={"/login"}>
                             Увійти до системи
-                        </Link> }
+                        </Link>}
                 </Nav>
             </Navbar>
         );
