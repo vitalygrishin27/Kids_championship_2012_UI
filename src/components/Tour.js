@@ -83,7 +83,7 @@ export default class Tour extends Component {
         axios.get(localStorage.getItem("host") + "competition/tours/" + tourId)
             // axios.get("http://localhost:8092/ui/players/" + playerId)
             .then(response => {
-                console.log(response);
+        //        console.log(response);
                 if (response.data != null) {
                     this.setState({
                         tourId: response.data.id,
@@ -98,7 +98,7 @@ export default class Tour extends Component {
                 this.setState({
                     blockScreen: false,
                 });
-                console.error("Error" + error);
+  //              console.error("Error" + error);
             });
     };
 
@@ -122,15 +122,15 @@ export default class Tour extends Component {
         data.append('tourName', this.state.tourName);
         data.append('competitionId', this.state.competitionId);
         data.append('tourDate', this.state.tourDate ? (new Date(this.state.tourDate)).toUTCString() : new Date(2020, 0, 1));
-        console.log("Send POST with: ");
-        for (const pair of data.entries()) {
-            console.log(pair[0] + ', ' + pair[1]);
-        }
+  //      console.log("Send POST with: ");
+  //      for (const pair of data.entries()) {
+    //        console.log(pair[0] + ', ' + pair[1]);
+    //    }
         this.setState({blockScreen: true});
         // axios.post("http://localhost:8092/ui/player", data)
         axios.post(localStorage.getItem("host") + "tours/" + this.state.tourId, data)
             .then((res) => {
-                console.log("RESPONSE RECEIVED: ", res);
+     //           console.log("RESPONSE RECEIVED: ", res);
                 this.setState({
                         tourId: -1,
                         tourName: '',
@@ -144,7 +144,7 @@ export default class Tour extends Component {
             .catch((err) => {
                 this.setState({"error": true, "show": true, "blockScreen": false});
                 setTimeout(() => this.setState({"show": false}), 3000);
-                console.log("AXIOS ERROR: ", err);
+      //          console.log("AXIOS ERROR: ", err);
             })
 
     };
@@ -251,7 +251,7 @@ export default class Tour extends Component {
                     <ToastMessage
                         show={this.state.show}
                         error={this.state.error}
-                        message={!this.state.error ? (this.state.method === "put" ? "Обновление прошло успешно!" : "Сохранение прошло успешно!") : "Ошибка при сохранении"}
+                        message={!this.state.error ? (this.state.method === "put" ? "Оновлення пройшло успішно!" : "Створення пройшло успішно!") : "Помилка при збереженні"}
                     />
                 </div>
                 <Card className={"border border-dark bg-dark text-white"}>
@@ -290,7 +290,7 @@ export default class Tour extends Component {
                         <Card.Footer style={{"textAlign": "right"}}>
                             <Button size="sm" variant="success" type="submit">
                                 <FontAwesomeIcon
-                                    icon={faSave}/> {this.state.tourId!=-1 ? "Оновити дані " : "Створити новий тур."}
+                                    icon={faSave}/> {this.state.tourId!=-1 ? "Оновити дані " : "Створити новий тур "}
                             </Button>{' '}
                             <Button size="sm" variant="info" type="reset">
                                 <FontAwesomeIcon icon={faUndo}/> Очистити

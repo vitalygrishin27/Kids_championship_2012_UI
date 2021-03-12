@@ -71,7 +71,7 @@ export default class Player extends Component {
         axios.get(localStorage.getItem("host")+"unRegisteredPlayers")
         //axios.get("http://localhost:8092/ui/unRegisteredPlayers")
             .then(response => {
-                console.log(response);
+         //       console.log(response);
                 if (response.data != null) {
                     this.setState({
                         unRegisteredPlayers: response.data,
@@ -80,7 +80,7 @@ export default class Player extends Component {
                 }
             })
             .catch((error) => {
-                console.error("Error" + error);
+           //     console.error("Error" + error);
                 this.setState({
                     loadingUnregisteredPlayer: false,
                 });
@@ -94,7 +94,7 @@ export default class Player extends Component {
         axios.get(localStorage.getItem("host")+"players/" + playerId)
         // axios.get("http://localhost:8092/ui/players/" + playerId)
             .then(response => {
-                console.log(response);
+           //     console.log(response);
                 if (response.data != null) {
                     this.setState({
                         id: response.data.id,
@@ -166,13 +166,13 @@ export default class Player extends Component {
 
         console.log("Send POST with: ");
         for (const pair of data.entries()) {
-            console.log(pair[0] + ', ' + pair[1]);
+     //       console.log(pair[0] + ', ' + pair[1]);
         }
         this.setState({blockScreen: true});
         // axios.post("http://localhost:8092/ui/player", data)
         axios.post(localStorage.getItem("host")+"player", data)
             .then((res) => {
-                console.log("RESPONSE RECEIVED: ", res);
+     //           console.log("RESPONSE RECEIVED: ", res);
                // this.setState(this.initialState);
                 this.setState({
                         id: '',
@@ -197,7 +197,7 @@ export default class Player extends Component {
             .catch((err) => {
                 this.setState({"error": true, "show": true, "blockScreen": false});
                 setTimeout(() => this.setState({"show": false}), 3000);
-                console.log("AXIOS ERROR: ", err);
+     //           console.log("AXIOS ERROR: ", err);
             })
 
     };
@@ -259,7 +259,7 @@ export default class Player extends Component {
             .catch((err) => {
                 this.setState({"error": true, "show": true, "blockScreen": false});
                 setTimeout(() => this.setState({"show": false}), 3000);
-                console.log("AXIOS ERROR: ", err);
+    //           console.log("AXIOS ERROR: ", err);
             })
 
     };
@@ -312,14 +312,15 @@ export default class Player extends Component {
                     <ToastMessage
                         show={this.state.show}
                         error={this.state.error}
-                        message={!this.state.error ? (this.state.method === "put" ? "Обновление прошло успешно!" : "Сохранение прошло успешно!") : "Ошибка при сохранении"}
+                        message={!this.state.error ? (this.state.method === "put" ? "Оновлення пройшло успішно!" : "Збереження пройшло успішно!") : "Помилка під час зебереження"}
                     />
                 </div>
                 <Card className={"border border-dark bg-dark text-white"}>
                     <Card.Header><FontAwesomeIcon
-                        icon={this.state.id ? faEdit : faPlusCircle}/> {this.state.id ? "Обновить данные игрока команды " + this.state.teamName : "Зарегистрировать игрока в команду " + this.state.teamName}
+                        icon={this.state.id ? faEdit : faPlusCircle}/> {this.state.id ? "Оновити дані гравця " + this.state.teamName : "Додати гравця " + this.state.teamName}
+                        <div style={{"height":10}}/>
                         <DropdownButton id="dropdown-basic-button" title=
-                            {this.state.loadingUnregisteredPlayer ? "Идет загрузка" : "Не заявленные игроки"}>
+                            {this.state.loadingUnregisteredPlayer ? "Завантаження..." : "Доступні гравці"}>
                             {this.state.unRegisteredPlayers.map((player, count) => (
                                 <Dropdown.Item onClick={() => this.setState({id: player.id})}>
                                     {player.lastName}
@@ -334,7 +335,7 @@ export default class Player extends Component {
                         <Card.Body>
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridPlayerLastName">
-                                    <Form.Label>Фамилия</Form.Label>
+                                    <Form.Label>Прізвище</Form.Label>
                                     <Form.Control
                                         className={"bg-dark text-white"}
                                         type="text"
@@ -343,10 +344,10 @@ export default class Player extends Component {
                                         required
                                         autoComplete="off"
                                         name="lastName"
-                                        placeholder="Фамилия"/>
+                                        placeholder="Прізвище"/>
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGridPlayerFirstName">
-                                    <Form.Label>Имя</Form.Label>
+                                    <Form.Label>Ім’я</Form.Label>
                                     <Form.Control
                                         className={"bg-dark text-white"}
                                         type="text"
@@ -355,12 +356,12 @@ export default class Player extends Component {
                                         required
                                         autoComplete="off"
                                         name="firstName"
-                                        placeholder="Имя"/>
+                                        placeholder="Ім’я"/>
                                 </Form.Group>
                             </Form.Row>
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridPlayerSecondName">
-                                    <Form.Label>Отчество</Form.Label>
+                                    <Form.Label>По батькові</Form.Label>
                                     <Form.Control
                                         className={"bg-dark text-white"}
                                         type="text"
@@ -369,10 +370,10 @@ export default class Player extends Component {
                                         required
                                         autoComplete="off"
                                         name="secondName"
-                                        placeholder="Отчество"/>
+                                        placeholder="По батькові"/>
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGridBirthday">
-                                    <Form.Label>Дата рождения</Form.Label>
+                                    <Form.Label>Дата народження</Form.Label>
                                     <Form.Control
                                         className={"bg-dark text-white"}
                                         type="date"
@@ -380,7 +381,7 @@ export default class Player extends Component {
                                         onChange={this.playerChange}
                                         name="birthday"
                                         autoComplete="off"
-                                        placeholder="Дата рождения"/>
+                                        placeholder="Дата народження"/>
                                 </Form.Group>
                             </Form.Row>
                             <Form.Row>
@@ -397,7 +398,7 @@ export default class Player extends Component {
                                         placeholder="Прописка"/>
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGridPlayerLegionary">
-                                    <Form.Label>Легионер</Form.Label>
+                                    <Form.Label>Легіонер</Form.Label>
                                     <Form.Control
                                         className={"bg-dark text-white"}
                                         type="checkbox"
@@ -408,7 +409,7 @@ export default class Player extends Component {
                                         onChange={this.checkBoxChange}
                                         autoComplete="off"
                                         name="isLegionary"
-                                        placeholder="Легионер"/>
+                                        placeholder="Легіонер"/>
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGridPlayerRole">
                                     <Form.Label>Амплуа</Form.Label>
@@ -424,7 +425,7 @@ export default class Player extends Component {
                             </Form.Row>
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridPlayerIdCard">
-                                    <Form.Label>Номер ID карты</Form.Label>
+                                    <Form.Label>Номер ID картки</Form.Label>
                                     <Form.Control
                                         className={"bg-dark text-white"}
                                         type="text"
@@ -432,10 +433,10 @@ export default class Player extends Component {
                                         onChange={this.playerChange}
                                         autoComplete="off"
                                         name="idCard"
-                                        placeholder="Номер ID карты"/>
+                                        placeholder="Номер ID картки"/>
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGridPhoto">
-                                    <Form.Label>Фотография</Form.Label>
+                                    <Form.Label>Фотографія</Form.Label>
                                     <input style={{display: "none"}}
                                            id="fileBox"
                                            type="file"
@@ -447,7 +448,7 @@ export default class Player extends Component {
                                             type="button"
                                             onClick={() => this.fileInput.click()}
                                     >
-                                        <FontAwesomeIcon icon={faUpload}/> Выбрать
+                                        <FontAwesomeIcon icon={faUpload}/> Обрати
                                     </Button> &nbsp;&nbsp;
                                     <Image style={{"display": filePreview ? "inline-block" : "none"}}
                                            src={this.state.filePreview} rounded width={"50"}
@@ -465,13 +466,13 @@ export default class Player extends Component {
                         <Card.Footer style={{"textAlign": "right"}}>
                             <Button size="sm" variant="success" type="submit">
                                 <FontAwesomeIcon
-                                    icon={faSave}/> {this.state.id ? "Заявить игрока с обновленными данными" : "Заявить нового игрока"}
+                                    icon={faSave}/> {this.state.id ? "Заявити гравця з оновленими даними" : "Заявити нового гравця"}
                             </Button>{' '}
                             <Button size="sm" variant="info" type="reset">
-                                <FontAwesomeIcon icon={faUndo}/> Очистить
+                                <FontAwesomeIcon icon={faUndo}/> Очистити
                             </Button>{' '}
                             <Button size="sm" variant="info" type="button" onClick={this.playerList.bind()}>
-                                <FontAwesomeIcon icon={faList}/> Состав команды
+                                <FontAwesomeIcon icon={faList}/> Склад команди
                             </Button>
                         </Card.Footer>
                     </Form>

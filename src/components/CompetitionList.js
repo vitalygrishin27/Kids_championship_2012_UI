@@ -78,7 +78,7 @@ export default class CompetitionList extends Component {
           }*/
         if (isErrorLoading) {
             info = <tr align={"center"}>
-                <td colSpan={"4"}>Ошибка загрузки</td>
+                <td colSpan={"4"}>Помилка завантаження</td>
             </tr>;
         }
         return (
@@ -87,7 +87,7 @@ export default class CompetitionList extends Component {
                     <ToastMessage
                         show={this.state.show}
                         error={this.state.error}
-                        message={!this.state.error ? "Удаление прошло успешно!" : "Ошибка при удалении"}
+                        message={!this.state.error ? "ВИлучення пройшло успішно!" : "Помилка під час вилучення"}
                     />
                 </div>
                 <Card className={"text-white"} style={{backgroundColor: 'transparent'}}>

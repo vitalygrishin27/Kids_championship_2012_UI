@@ -10,7 +10,7 @@ export default class Footer extends Component {
                 <Container>
                     <Col lg={12} className={"text-center text-muted"}>
                         <div>
-                            {fullYear}-{fullYear+1}. Все права защищены. ДРФФ.
+                            {fullYear}-{fullYear+1}. Developed by Vitaliy Grishin special for DERFF.
                         </div>
                     </Col>
                 </Container>

@@ -164,7 +164,7 @@ export default class Game extends Component {
         // axios.post("http://localhost:8092/ui/player", data)
         axios.post(localStorage.getItem("host") + "games/" + this.state.gameId, data)
             .then((res) => {
-                console.log("RESPONSE RECEIVED: ", res);
+     //          console.log("RESPONSE RECEIVED: ", res);
                 this.setState({
                         gameId: -1,
                         masterTeamId: -1,
@@ -178,7 +178,7 @@ export default class Game extends Component {
             .catch((err) => {
                 this.setState({"error": true, "show": true, "blockScreen": false});
                 setTimeout(() => this.setState({"show": false}), 3000);
-                console.log("AXIOS ERROR: ", err);
+      //          console.log("AXIOS ERROR: ", err);
             })
 
     };
@@ -282,7 +282,7 @@ export default class Game extends Component {
                     <ToastMessage
                         show={this.state.show}
                         error={this.state.error}
-                        message={!this.state.error ? (this.state.method === "put" ? "Обновление прошло успешно!" : "Сохранение прошло успешно!") : "Ошибка при сохранении"}
+                        message={!this.state.error ? (this.state.method === "put" ? "Оновлення пройшло успішно!" : "Створення пройшло успішно!") : "Помилка при збереженні"}
                     />
                 </div>
                 <Card className={"border border-dark bg-dark text-white"}>

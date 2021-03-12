@@ -91,7 +91,7 @@ export default class Login extends Component {
                         <Card.Body>
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridLogin">
-                                    <Form.Label>Логин</Form.Label>
+                                    <Form.Label>Логін</Form.Label>
                                     <Form.Control
                                         className={"bg-dark text-white"}
                                         type="text"

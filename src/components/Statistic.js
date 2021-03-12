@@ -116,11 +116,11 @@ export default class Standings extends Component {
                                     </tr> :
                                     dataInfo.length === 0 && !isLoading ?
                                         <tr align={"center"}>
-                                            <td colSpan={"11"}>Нема даних</td>
+                                            <td colSpan={"11"}>Дані відсутні</td>
                                         </tr> :
                                         isLoading ?
                                             <tr align={"center"}>
-                                                <td colSpan={"11"}>Завантаження</td>
+                                                <td colSpan={"11"}>Завантаження...</td>
                                             </tr> :
                                             dataInfo.map((row, count) => (
                                                 <tr style={{

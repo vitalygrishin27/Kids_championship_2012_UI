@@ -86,7 +86,7 @@ export default class Standings extends Component {
                                 {
                                     this.state.standings.length === 0 && !isLoading ?
                                         <tr align={"center"}>
-                                            <td colSpan={"11"}>Нема даних</td>
+                                            <td colSpan={"11"}>Дані відсутні</td>
                                         </tr> :
                                         isLoading ?
                                             <tr align={"center"}>
@@ -157,7 +157,7 @@ export default class Standings extends Component {
                                 {
                                     this.state.standings.length === 0 && !isLoading ?
                                         <tr align={"center"}>
-                                            <td colSpan={"11"}>Нема даних</td>
+                                            <td colSpan={"11"}>Дані відсутні</td>
                                         </tr> :
                                         isLoading ?
                                             <tr align={"center"}>

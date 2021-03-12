@@ -108,8 +108,8 @@ export default class TeamList extends Component {
             //  axios.delete("http://localhost:8092/ui/team/" + teamId)
             .then(response => {
                 if (response.data != null) {
-                    console.log("Delete OK");
-                    console.log(response.data);
+                  //  console.log("Delete OK");
+                  //  console.log(response.data);
                     this.setState({"error": false, "show": true, "blockScreen": false});
                     setTimeout(() => this.setState({"show": false}), 3000);
                     this.setState({
@@ -119,7 +119,7 @@ export default class TeamList extends Component {
             }).catch(() => {
             this.setState({"error": true, "show": true, "blockScreen": false});
             setTimeout(() => this.setState({"show": false}), 3000);
-            console.log("Error during deletion");
+         //   console.log("Error during deletion");
         });
     };
 
@@ -135,7 +135,7 @@ export default class TeamList extends Component {
           }*/
         if (isErrorLoading) {
             info = <tr align={"center"}>
-                <td colSpan={"5"}>Ошибка загрузки</td>
+                <td colSpan={"5"}>Помилка завантаження</td>
             </tr>;
         }
         return (
@@ -144,11 +144,11 @@ export default class TeamList extends Component {
                     <ToastMessage
                         show={this.state.show}
                         error={this.state.error}
-                        message={!this.state.error ? "Удаление прошло успешно!" : "Ошибка при удалении"}
+                        message={!this.state.error ? "Вилучення пройшло успішно!" : "Помилка під час вилучення"}
                     />
                 </div>
                 <Card className={"text-white"} style={{ backgroundColor: 'transparent' }} >
-                    <Card.Header><FontAwesomeIcon icon={faList}/> Команды сезона</Card.Header>
+                    <Card.Header><FontAwesomeIcon icon={faList}/> Команди сезону</Card.Header>
                     <Link style={{"display": "inline"}} className="nav-link"
                           to={"add"}>{' '}
 
@@ -164,10 +164,10 @@ export default class TeamList extends Component {
                             <thead>
                             <tr>
                                 <th>№</th>
-                                <th>Название</th>
-                                <th>Населенный пункт</th>
-                                <th>Руководитель</th>
-                                <th>Действия</th>
+                                <th>Назва</th>
+                                <th>Населений пункт</th>
+                                <th>Керівник</th>
+                                <th>Дії</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -175,11 +175,11 @@ export default class TeamList extends Component {
                             {
                                 this.state.teams.length === 0 && !isLoadingSeason && !isLoadingTeamList ?
                                     <tr align={"center"}>
-                                        <td colSpan={"5"}>Нет зарегистрированных команд</td>
+                                        <td colSpan={"5"}>Команди відсутні</td>
                                     </tr> :
                                     isLoadingSeason || isLoadingTeamList ?
                                         <tr align={"center"}>
-                                            <td colSpan={"5"}>Идет загрузка</td>
+                                            <td colSpan={"5"}>Завантаження...</td>
                                         </tr> :
                                         this.state.teams.map((team, count) => (
                                             <tr key={team.id}>

@@ -19,7 +19,7 @@ export default class ToastMessage extends Component {
                     <Toast.Header
                         className={!this.props.error ? "bg-success text-white" : "bg-danger text-white"}
                         closeButton={false}>
-                        <strong className={"mr-auto"}>Сообщение</strong>
+                        <strong className={"mr-auto"}>Повідомлення</strong>
                     </Toast.Header>
                     <Toast.Body>
                         {this.props.message}

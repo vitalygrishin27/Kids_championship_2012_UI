@@ -84,7 +84,7 @@ export default class Competition extends Component {
         data.append('id', this.state.competitionId);
         data.append('name', this.state.competitionName);
         data.append('forStandings', this.state.isForStandings);
-        console.log("Send POST with: ");
+    ///    console.log("Send POST with: ");
         for (const pair of data.entries()) {
             console.log(pair[0] + ', ' + pair[1]);
         }
@@ -92,7 +92,7 @@ export default class Competition extends Component {
         // axios.post("http://localhost:8092/ui/player", data)
         axios.post(localStorage.getItem("host") + "competition", data)
             .then((res) => {
-                console.log("RESPONSE RECEIVED: ", res);
+           //     console.log("RESPONSE RECEIVED: ", res);
                 this.setState({
                         competitionId: -1,
                         competitionName: '',
@@ -106,7 +106,7 @@ export default class Competition extends Component {
             .catch((err) => {
                 this.setState({"error": true, "show": true, "blockScreen": false});
                 setTimeout(() => this.setState({"show": false}), 3000);
-                console.log("AXIOS ERROR: ", err);
+        //        console.log("AXIOS ERROR: ", err);
             })
 
     };

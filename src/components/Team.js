@@ -76,7 +76,7 @@ export default class Team extends Component {
         axios.get(localStorage.getItem("host")+"team/" + teamId)
             //  axios.get("http://localhost:8092/ui/team/" + teamId)
             .then(response => {
-                console.log(response);
+         //       console.log(response);
                 if (response.data != null) {
                     this.setState({
                         id: response.data.id,
@@ -155,14 +155,14 @@ export default class Team extends Component {
         data.append('userName', localStorage.getItem("user"));
 
         console.log("Send POST with: ");
-        for (const pair of data.entries()) {
-            console.log(pair[0] + ', ' + pair[1]);
-        }
+   //     for (const pair of data.entries()) {
+   //         console.log(pair[0] + ', ' + pair[1]);
+   //     }
         this.setState({blockScreen: true});
         // axios.put("http://localhost:8092/ui/team", data)
         axios.put(localStorage.getItem("host")+"team", data)
             .then((res) => {
-                console.log("RESPONSE RECEIVED: ", res);
+    //            console.log("RESPONSE RECEIVED: ", res);
                 this.setState(this.initialState);
                 this.setState({"show": true, "error": false, method: 'put'});
                 setTimeout(() => this.setState({"show": false}), 3000);
@@ -172,7 +172,7 @@ export default class Team extends Component {
             .catch((err) => {
                 this.setState({"error": true, "show": true, "blockScreen": false});
                 setTimeout(() => this.setState({"show": false}), 3000);
-                console.log("AXIOS ERROR: ", err);
+        //        console.log("AXIOS ERROR: ", err);
             })
 
     };
@@ -214,13 +214,14 @@ export default class Team extends Component {
                     <ToastMessage
                         show={this.state.show}
                         error={this.state.error}
-                        message={!this.state.error ? (this.state.method === "put" ? "Обновление прошло успешно!" : "Сохранение прошло успешно!") : "Ошибка при сохранении"}
+                        message={!this.state.error ? (this.state.method === "put" ? "Оновлення пройшло успішно!" : "Створення пройшло успішно!") : "Помилка під час збереження"}
                     />
                 </div>
                 <Card className={"border border-dark bg-dark text-white"}>
                     <Card.Header><FontAwesomeIcon
-                        icon={this.state.id ? faEdit : faPlusCircle}/> {this.state.id ? "Обновить данные" : "Зарегистрировать команду"}
-                        <DropdownButton id="dropdown-basic-button" title="Не заявленные команды">
+                        icon={this.state.id ? faEdit : faPlusCircle}/> {this.state.id ? "Оновити дані" : "Зареєструвати команду"}
+                        <div style={{"height":10}}/>
+                        <DropdownButton id="dropdown-basic-button" title="Доступні команди">
                             {this.state.unRegisteredTeams.map((team, count) => (
                                 <Dropdown.Item>
                                     <Button size="sm"
@@ -237,7 +238,7 @@ export default class Team extends Component {
                         <Card.Body>
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridTeamName">
-                                    <Form.Label>Название</Form.Label>
+                                    <Form.Label>Назва</Form.Label>
                                     <Form.Control
                                         className={"bg-dark text-white"}
                                         type="text"
@@ -246,10 +247,10 @@ export default class Team extends Component {
                                         required
                                         autoComplete="off"
                                         name="teamName"
-                                        placeholder="Название"/>
+                                        placeholder="Назва"/>
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGridVillage">
-                                    <Form.Label>Населенный пункт</Form.Label>
+                                    <Form.Label>Населений пункт</Form.Label>
                                     <Form.Control
                                         className={"bg-dark text-white"}
                                         type="text"
@@ -258,12 +259,12 @@ export default class Team extends Component {
                                         required
                                         autoComplete="off"
                                         name="village"
-                                        placeholder="Населенный пункт"/>
+                                        placeholder="Населений пункт"/>
                                 </Form.Group>
                             </Form.Row>
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridBoss">
-                                    <Form.Label>Руководитель</Form.Label>
+                                    <Form.Label>Керівник</Form.Label>
                                     <Form.Control
                                         className={"bg-dark text-white"}
                                         type="text"
@@ -272,7 +273,7 @@ export default class Team extends Component {
                                         required
                                         autoComplete="off"
                                         name="boss"
-                                        placeholder="Руководитель"/>
+                                        placeholder="Керівник"/>
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGridPhone">
                                     <Form.Label>Телефон</Form.Label>
@@ -288,7 +289,7 @@ export default class Team extends Component {
                             </Form.Row>
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridDate">
-                                    <Form.Label>Дата основания</Form.Label>
+                                    <Form.Label>Дата заснування</Form.Label>
                                     <Form.Control
                                         className={"bg-dark text-white"}
                                         type="date"
@@ -296,10 +297,10 @@ export default class Team extends Component {
                                         onChange={this.teamChange}
                                         name="date"
                                         autoComplete="off"
-                                        placeholder="Дата основания"/>
+                                        placeholder="Дата заснування"/>
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGridSymbol">
-                                    <Form.Label>Эмблема</Form.Label>
+                                    <Form.Label>Емблема</Form.Label>
                                     <input style={{display: "none"}}
                                            id="fileBox"
                                            type="file"
@@ -311,7 +312,7 @@ export default class Team extends Component {
                                             type="button"
                                             onClick={() => this.fileInput.click()}
                                     >
-                                        <FontAwesomeIcon icon={faUpload}/> Выбрать
+                                        <FontAwesomeIcon icon={faUpload}/> Обрати
                                     </Button> &nbsp;&nbsp;
                                     <Image style={{"display": filePreview ? "inline-block" : "none"}}
                                            src={this.state.filePreview} roundedCircle width={"50"}
@@ -328,10 +329,10 @@ export default class Team extends Component {
                         </Card.Body>
                         <Card.Footer style={{"textAlign": "right"}}>
                             <Button size="sm" variant="success" type="submit">
-                                <FontAwesomeIcon icon={faSave}/> {this.state.id ? "Обновить" : "Заявить"}
+                                <FontAwesomeIcon icon={faSave}/> {this.state.id ? "Оновити" : "Заявити"}
                             </Button>{' '}
                             <Button size="sm" variant="info" type="reset">
-                                <FontAwesomeIcon icon={faUndo}/> Очистить
+                                <FontAwesomeIcon icon={faUndo}/> Очистити
                             </Button>{' '}
                             <Button size="sm" variant="info" type="button" onClick={this.teamList.bind()}>
                                 <FontAwesomeIcon icon={faList}/> Список команд

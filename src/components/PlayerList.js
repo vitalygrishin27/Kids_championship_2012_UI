@@ -89,8 +89,8 @@ export default class PlayerList extends Component {
             // axios.delete("http://localhost:8092/ui/players/" + playerId)
             .then(response => {
                 if (response.data != null) {
-                    console.log("Delete OK");
-                    console.log(response.data);
+             //       console.log("Delete OK");
+             //       console.log(response.data);
                     this.setState({"error": false, "show": true, "blockScreen": false});
                     setTimeout(() => this.setState({"show": false}), 3000);
                     this.setState({
@@ -100,7 +100,7 @@ export default class PlayerList extends Component {
             }).catch(() => {
             this.setState({"error": true, "show": true, "blockScreen": false});
             setTimeout(() => this.setState({"show": false}), 3000);
-            console.log("Error during deletion");
+     //       console.log("Error during deletion");
         });
     };
 
@@ -120,7 +120,7 @@ export default class PlayerList extends Component {
          }*/
         if (isErrorLoading) {
             info = <tr align={"center"}>
-                <td colSpan={"11"}>Ошибка загрузки</td>
+                <td colSpan={"11"}>Помилка завантаження</td>
             </tr>;
         }
         return (
@@ -129,15 +129,15 @@ export default class PlayerList extends Component {
                     <ToastMessage
                         show={this.state.show}
                         error={this.state.error}
-                        message={!this.state.error ? "Удаление прошло успешно!" : "Ошибка при удалении"}
+                        message={!this.state.error ? "Вилучення пройшло успішно!" : "Помилка під час вилучення"}
                     />
                 </div>
                 <Card className={"text-white"} style={{ backgroundColor: 'transparent' }}>
-                    <Card.Header><FontAwesomeIcon icon={faList}/> Игроки команды {this.state.teamName}
+                    <Card.Header><FontAwesomeIcon icon={faList}/> Гравці команди  {this.state.teamName}
                         {'  '}<Button size="sm" variant="info" type="button"
                                 style={{"display": (localStorage.getItem("role") && localStorage.getItem("role").match("ADMINISTRATOR")) || (this.state.isAuthenticated && (localStorage.getItem("teamIds").match(this.state.teamId))) ? "inline" : "none"}}
                                 onClick={this.playerCard.bind()}>
-                            <FontAwesomeIcon icon={faList}/> Заявить игрока
+                            <FontAwesomeIcon icon={faList}/> Заявити гравця
                         </Button>
                     </Card.Header>
                     <Card.Body>
@@ -146,16 +146,16 @@ export default class PlayerList extends Component {
                             <tr>
                                 <th>№</th>
                                 <th>Фото</th>
-                                <th>Имя</th>
-                                <th>Дата рождения</th>
+                                <th>Ім’я</th>
+                                <th>Дата народження</th>
                                 <th>Амплуа</th>
                                 <th>Прописка</th>
-                                <th>Легионер</th>
-                                <th>Голы</th>
-                                <th>Желтые карточки</th>
-                                <th>Красные карточки</th>
+                                <th>Легіонер</th>
+                                <th>Голи</th>
+                                <th>Жовті картки</th>
+                                <th>Красні картки</th>
                                 {(localStorage.getItem("role") && localStorage.getItem("role").match("ADMINISTRATOR")) || (this.state.isAuthenticated && (localStorage.getItem("teamIds").match(this.state.teamId))) ?
-                                    <th>Действия</th> : ""}
+                                    <th>Дії</th> : ""}
                             </tr>
                             </thead>
                             <tbody>
@@ -163,11 +163,11 @@ export default class PlayerList extends Component {
                             {
                                 this.state.players.length === 0 && !isLoadingPlayerList && !isLoadingSeason ?
                                     <tr align={"center"}>
-                                        <td colSpan={"11"}>Нет зарегистрированных игроков</td>
+                                        <td colSpan={"11"}>Зареєстровані гравці відсутні</td>
                                     </tr> :
                                     isLoadingPlayerList || isLoadingSeason ?
                                         <tr align={"center"}>
-                                            <td colSpan={"11"}>Идет загрузка</td>
+                                            <td colSpan={"11"}>Завантаження...</td>
                                         </tr> :
                                         this.state.players.map((player, count) => (
                                             <tr key={player.id}>
@@ -181,7 +181,7 @@ export default class PlayerList extends Component {
                                                 <td>{player.birthday ? player.birthday.toString().substring(0, 10) : ''}</td>
                                                 <td>{player.role}</td>
                                                 <td>{player.registration}</td>
-                                                <td>{player.isLegionary ? "Да" : "Нет"}</td>
+                                                <td>{player.isLegionary ? "+" : "-"}</td>
                                                 <td>{player.goalsCount}</td>
                                                 <td>{player.yellowCardCount}</td>
                                                 <td>{player.redCardCount}</td>

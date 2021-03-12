@@ -117,14 +117,14 @@ export default class TourList extends Component {
                     <ToastMessage
                         show={this.state.show}
                         error={this.state.error}
-                        message={!this.state.error ? "Удаление прошло успешно!" : "Ошибка при удалении"}
+                        message={!this.state.error ? "Вилучення пройшло успішно!" : "Помилка при вилученні"}
                     />
                 </div>
                 <Card className={"text-white"} style={{backgroundColor: 'transparent'}}>
                     <div style={{"display": "inline"}}>
                     <Card.Header><FontAwesomeIcon icon={faList}/> Тури змагання</Card.Header>
                     <DropdownButton style={{"display": "inline"}} id="dropdown-basic-button" title=
-                        {isLoadingCompetitions ? "Идет загрузка" : "Обрати змагання"}>
+                        {isLoadingCompetitions ? "Завантаження..." : "Обрати змагання"}>
                         {this.state.competitions.map((competition) => (
                             <Dropdown.Item onClick={() => this.setState({activeCompetitionName: competition.name,
                                 activeCompetitionId: competition.id})}>
@@ -148,9 +148,9 @@ export default class TourList extends Component {
                             <thead>
                             <tr>
                                 <th>№</th>
-                                <th>Название</th>
+                                <th>Назва</th>
                                 <th>Дата</th>
-                                <th>Действия</th>
+                                <th>Дії</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -158,11 +158,11 @@ export default class TourList extends Component {
                             {
                                 this.state.tours.length === 0 && !isLoadingCompetitions && !isLoadingToursForCompetition ?
                                     <tr align={"center"}>
-                                        <td colSpan={"4"}>Нет зарегистрированных туров</td>
+                                        <td colSpan={"4"}>Тури відсутні</td>
                                     </tr> :
                                     isLoadingCompetitions || isLoadingToursForCompetition ?
                                         <tr align={"center"}>
-                                            <td colSpan={"4"}>Идет загрузка</td>
+                                            <td colSpan={"4"}>Завантаження</td>
                                         </tr> :
                                         this.state.tours.map((tour, count) => (
                                             <tr key={tour.id}>

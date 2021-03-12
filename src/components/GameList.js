@@ -93,7 +93,7 @@ export default class GameList extends Component {
             <div>
                 <div style={{"display": "inline"}}>
                     <DropdownButton style={{"display": "inline"}} id="dropdown-basic-button" title=
-                        {isLoadingTourList ? "Идет загрузка" : "Обрати тур"}>
+                        {isLoadingTourList ? "Завантаження..." : "Обрати тур"}>
                         {this.state.tours.map((tour, count) => (
                             <Dropdown.Item style={{"padding-bottom": count==this.state.tours.length-1 ? "50px": "5px" }} onClick={() => this.setState({activeTour: tour.tourName, activeTourId: tour.id})}>
                                 {tour.tourName}
