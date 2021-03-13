@@ -43,17 +43,17 @@ export default class Welcome extends Component {
                         {'  '}<Button size="sm" variant="info" type="button"
                                       style={{"display": "inline"}}
                                       onClick={this.changeDB.bind(this, "https://kids-championchip-2008-service.herokuapp.com/ui/", "ADULT (2008-2009)")}>
-                        <FontAwesomeIcon icon={faList}/> 2008 рік
+                        <FontAwesomeIcon icon={faList}/> ADULT (2008-2009)
                     </Button>
                         {'  '}<Button size="sm" variant="info" type="button"
                                       style={{"display": "inline"}}
                                       onClick={this.changeDB.bind(this, "https://kids-championchip-2010-service.herokuapp.com/ui/", "JUNIOR (2010-2011)")}>
-                        <FontAwesomeIcon icon={faList}/> 2010 рік
+                        <FontAwesomeIcon icon={faList}/> JUNIOR (2010-2011)
                     </Button>
                         {'  '}<Button size="sm" variant="info" type="button"
                                       style={{"display": "inline"}}
                                       onClick={this.changeDB.bind(this, "https://kids-championchip-2012-service.herokuapp.com/ui/", "KIDS (2012-2013)")}>
-                        <FontAwesomeIcon icon={faList}/> 2012 рік
+                        <FontAwesomeIcon icon={faList}/> KIDS (2012-2013)
                     </Button>
                     </Card.Header>
                     <Card.Body>
