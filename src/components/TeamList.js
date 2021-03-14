@@ -167,7 +167,7 @@ export default class TeamList extends Component {
                                 <th>Назва</th>
                                 <th>Населений пункт</th>
                                 <th>Керівник</th>
-                                <th>Дії</th>
+                                <th>{this.state.role && this.state.role.match("ADMINISTRATOR") ? "Дії" : "Гравці"}</th>
                             </tr>
                             </thead>
                             <tbody>
