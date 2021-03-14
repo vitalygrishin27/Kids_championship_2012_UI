@@ -150,7 +150,7 @@ export default class PlayerList extends Component {
                                 <th>Дата народження</th>
                                 <th>Голи</th>
                                 <th>Жовті картки</th>
-                                <th>Красні картки</th>
+                                <th>Червоні картки</th>
                                 {(localStorage.getItem("role") && localStorage.getItem("role").match("ADMINISTRATOR")) || (this.state.isAuthenticated && (localStorage.getItem("teamIds").match(this.state.teamId))) ?
                                     <th>Дії</th> : ""}
                             </tr>
