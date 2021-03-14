@@ -120,7 +120,7 @@ export default class PlayerList extends Component {
          }*/
         if (isErrorLoading) {
             info = <tr align={"center"}>
-                <td colSpan={"11"}>Помилка завантаження</td>
+                <td colSpan={"8"}>Помилка завантаження</td>
             </tr>;
         }
         return (
@@ -148,9 +148,6 @@ export default class PlayerList extends Component {
                                 <th>Фото</th>
                                 <th>Ім’я</th>
                                 <th>Дата народження</th>
-                                <th>Амплуа</th>
-                                <th>Прописка</th>
-                                <th>Легіонер</th>
                                 <th>Голи</th>
                                 <th>Жовті картки</th>
                                 <th>Красні картки</th>
@@ -163,11 +160,11 @@ export default class PlayerList extends Component {
                             {
                                 this.state.players.length === 0 && !isLoadingPlayerList && !isLoadingSeason ?
                                     <tr align={"center"}>
-                                        <td colSpan={"11"}>Зареєстровані гравці відсутні</td>
+                                        <td colSpan={"9"}>Зареєстровані гравці відсутні</td>
                                     </tr> :
                                     isLoadingPlayerList || isLoadingSeason ?
                                         <tr align={"center"}>
-                                            <td colSpan={"11"}>Завантаження...</td>
+                                            <td colSpan={"9"}>Завантаження...</td>
                                         </tr> :
                                         this.state.players.map((player, count) => (
                                             <tr key={player.id}>
@@ -179,9 +176,6 @@ export default class PlayerList extends Component {
                                                     {' '}{player.firstName}
                                                     {' '}{player.secondName}</td>
                                                 <td>{player.birthday ? player.birthday.toString().substring(0, 10) : ''}</td>
-                                                <td>{player.role}</td>
-                                                <td>{player.registration}</td>
-                                                <td>{player.isLegionary ? "+" : "-"}</td>
                                                 <td>{player.goalsCount}</td>
                                                 <td>{player.yellowCardCount}</td>
                                                 <td>{player.redCardCount}</td>
