@@ -151,7 +151,7 @@ export default class GameList extends Component {
                         <Table striped bordered hover variant={"dark"} style={{"width": "50%", 'display': 'table'}}>
                             <thead>
                             <tr style={{"color": "#ffcb3b"}}>
-                                <th colSpan='5' style={{
+                                <th colSpan='6' style={{
                                     "fontSize": "15pt",
                                     "fontWeight": "600",
                                     "textAlign": "center"
@@ -209,10 +209,6 @@ export default class GameList extends Component {
                                                 {(localStorage.getItem("role") && localStorage.getItem("role").match("ADMINISTRATOR")) ?
                                                     <td>
                                                         <ButtonGroup>
-                                                            <Button size="sm" variant="info" type="button"
-                                                                    onClick={this.printReport.bind(this, game.id)}>
-                                                                <FontAwesomeIcon icon={faList}/>
-                                                            </Button>
                                                             <Link className="btn btn-sm btn-outline-primary"
                                                                   to={"/games/result/" + game.id + "/" + game.masterTeamName + "/" + game.slaveTeamName}>{' '}
                                                                 <FontAwesomeIcon icon={faRegistered}/>
