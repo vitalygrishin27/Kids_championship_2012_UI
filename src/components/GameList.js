@@ -87,17 +87,17 @@ export default class GameList extends Component {
 
     }
 
-    printReport = (gameId) => {
-      axios({
+    printReport = (gameId, masterTeamName, slaveTeamName) => {
+        axios({
           method:'GET',
           url: this.state.host + "report/" + gameId,
           responseType: 'blob',
           headers: {
               'Content-Type': "application/vnd.ms-excel",
           },
-      }).then((result) => {
-          FileDownload(result.data, 'report.xls');
-      });
+        }).then((result) => {
+            FileDownload(result.data, masterTeamName + "-" + slaveTeamName + ".xls");
+        });
     };
 
     render() {
@@ -201,7 +201,7 @@ export default class GameList extends Component {
                                                 <td>
                                                     <ButtonGroup>
                                                         <Button size="sm" variant="info" type="button"
-                                                                onClick={this.printReport.bind(this, game.id)}>
+                                                                onClick={this.printReport.bind(this, game.id, game.masterTeamName, game.slaveTeamName)}>
                                                             <FontAwesomeIcon icon={faList}/>
                                                         </Button>
                                                     </ButtonGroup>

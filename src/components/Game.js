@@ -14,8 +14,6 @@ export default class Game extends Component {
         this.state.loadingTeams = false;
         this.state.blockScreen = false;
         this.state.error = false;
-        //  this.gameChange = this.gameChange.bind(this);
-        //   this.checkBoxChange = this.checkBoxChange.bind(this);
         this.submitGame = this.submitGame.bind(this);
         this.resetForm = this.resetForm.bind(this);
     }
