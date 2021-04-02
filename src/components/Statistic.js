@@ -2,7 +2,9 @@ import React, {Component} from "react";
 import axios from "axios";
 import {Button, ButtonGroup, Card, Image, Table} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAddressBook, faEdit, faList, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {
+    faList, faPeopleArrows,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default class Standings extends Component {
     constructor(props) {
@@ -23,24 +25,31 @@ export default class Standings extends Component {
     }
 
     getStatisticFromBackEnd = (command) => {
-        console.log(command);
+      //  console.log(command);
         this.setState({
             isLoading: true,
             isErrorLoading: false,
         });
         axios.get(localStorage.getItem("host") + "statistic/" + command)
             // axios.get("http://localhost:8092/ui/statistic/" + command)
-            .then(response => response.data)
-            .then((data) => {
-                // alert(data);
-                this.setState({
-                    title: command === "skipGames" ? "Пропуск ігор" : command === "yellowCards" ? "Жовті картки" : "Бомбардири",
-                    isSkipGamesTable: command === "skipGames",
-                    dataInfo: data,
-                    isLoading: false,
-                    isErrorLoading: false,
-                });
-                console.log(this.state.dataInfo);
+            .then(response => {
+                //    console.log(response.status);
+                if (response.status == 423) {
+                    this.setState({
+                        dataInfo: [],
+                        isLoading: false,
+                        isErrorLoading: true,
+                    });
+                } else {
+                    this.setState({
+                        title: command === "skipGames" ? "Пропуск ігор" : command === "yellowCards" ? "Жовті картки" : "Бомбардири",
+                        isSkipGamesTable: command === "skipGames",
+                        dataInfo: response.data,
+                        isLoading: false,
+                        isErrorLoading: false,
+                    });
+                   // console.log(this.state.dataInfo);
+                }
             }).catch(() => {
             this.setState({
                 dataInfo: [],
@@ -67,7 +76,9 @@ export default class Standings extends Component {
                                 картки</Button>&nbsp;
                             <Button size={"sm"} variant={"outline-danger"}
                                     onClick={this.getStatisticFromBackEnd.bind(this, "skipGames")}>Пропуск
-                                ігор</Button>&nbsp;
+                                ігор</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <Button style={{"text-align":"right"}} size={"sm"} variant={"outline-primary"}
+                                    onClick={this.getStatisticFromBackEnd.bind(this, "reload")}><FontAwesomeIcon icon={faPeopleArrows}/>&nbsp;&nbsp;Перерахувати статистику на сервері</Button>&nbsp;
                         </ButtonGroup>
                     </Card.Header>
                     <Card.Body>
