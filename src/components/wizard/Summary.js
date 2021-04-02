@@ -83,10 +83,10 @@ export default class Summary extends Component {
                                 </tr>
                                 <tr align={"center"}>
                                     {this.props.isMasterTechnicalWin ?
-                                        <td>Техническая победа</td> :
+                                        <td>Технічна перемога</td> :
                                         <td/>}
                                     {this.props.isSlaveTechnicalWin ?
-                                        <td>Техническая победа</td> :
+                                        <td>Технічна перемога</td> :
                                         <td/>}
                                 </tr>
                                 </thead>

@@ -53,7 +53,7 @@ export default class CountGoalsForm extends Component {
                             </Form.Row>
                             <Form.Row>
                                 <Form.Group as={Col} controlId={"formGridMasterTechnicalWin"} style={{"textAlign": "center"}}>
-                                    <Form.Label>Техническая победа</Form.Label>
+                                    <Form.Label>Технічна перемога</Form.Label>
                                     <Form.Control
                                         className={"bg-dark text-white"}
                                         type="checkbox"
@@ -64,10 +64,10 @@ export default class CountGoalsForm extends Component {
                                         onChange={this.props.masterCheckBoxChange}
                                         autoComplete="off"
                                         name="isMasterTechnicalWin"
-                                        placeholder="Техническая победа"/>
+                                        placeholder="Технічна перемога"/>
                                 </Form.Group>
                                 <Form.Group as={Col} controlId={"formGridSlaveTechnicalWin"} style={{"textAlign": "center"}}>
-                                    <Form.Label>Техническая победа</Form.Label>
+                                    <Form.Label>Технічна перемога</Form.Label>
                                     <Form.Control
                                         className={"bg-dark text-white"}
                                         type="checkbox"
@@ -78,7 +78,7 @@ export default class CountGoalsForm extends Component {
                                         onChange={this.props.slaveCheckBoxChange}
                                         autoComplete="off"
                                         name="isSlaveTechnicalWin"
-                                        placeholder="Техническая победа"/>
+                                        placeholder="Технічна перемога"/>
                                 </Form.Group>
                             </Form.Row>
                         </Card.Body>
