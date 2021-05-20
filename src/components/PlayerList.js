@@ -3,8 +3,9 @@ import axios from "axios";
 import ToastMessage from "./ToastMessage";
 import {Button, ButtonGroup, Card, Image, Table} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAddressBook, faEdit, faList, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {faAddressBook, faDownload, faEdit, faList, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
+import FileDownload from "js-file-download";
 
 export default class PlayerList extends Component {
 
@@ -83,6 +84,20 @@ export default class PlayerList extends Component {
             });
         });
     };
+
+    downloadPhoto = (playerId, playerLastName) =>{
+        axios({
+            method:'GET',
+            url: localStorage.getItem("host")+"players/download/photo/"+playerId,
+            responseType: 'blob',
+            headers: {
+                'Content-Type': "application/octet-stream",
+            },
+        }).then((result) => {
+            FileDownload(result.data, playerLastName + ".jpg");
+        });
+
+    }
 
     deletePlayer = (playerId) => {
         axios.delete(localStorage.getItem("host")+"players/" + playerId)
@@ -191,6 +206,10 @@ export default class PlayerList extends Component {
                                                                     style={{"display": (localStorage.getItem("role") && localStorage.getItem("role").match("ADMINISTRATOR")) || (this.state.isAuthenticated && (localStorage.getItem("teamIds").match(this.state.teamId))) ? "block" : "none"}}
                                                                     onClick={this.deletePlayer.bind(this, player.id)}><FontAwesomeIcon
                                                                 icon={faTrash}/></Button>{' '}
+                                                            <Button size={"sm"} variant={"outline-primary"}
+                                                                    style={{"display": (localStorage.getItem("role") && localStorage.getItem("role").match("ADMINISTRATOR")) || (this.state.isAuthenticated && (localStorage.getItem("teamIds").match(this.state.teamId))) ? "block" : "none"}}
+                                                                    onClick={this.downloadPhoto.bind(this, player.id, player.lastName)}><FontAwesomeIcon
+                                                                icon={faDownload}/></Button>{' '}
                                                         </ButtonGroup>
                                                     </td>
                                                     : ""}
